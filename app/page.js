@@ -2,10 +2,10 @@ import PageClient from "@/app/page.client";
 import {dehydrate, HydrationBoundary, QueryClient} from "@tanstack/react-query";
 import { promises as fs } from 'fs';
 
-
-const queryClient = new QueryClient()
 export default async function Home()
 {
+    const queryClient = new QueryClient();
+
     queryClient.prefetchQuery({
         queryKey: ['users'],
         queryFn: async () => {
