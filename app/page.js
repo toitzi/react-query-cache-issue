@@ -14,7 +14,7 @@ export default async function Home()
             const file = await fs.readFile(process.cwd() + '/data/users.json', 'utf8');
             return JSON.parse(file)
         }
-    }).catch()
+    })
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>
