@@ -14,7 +14,6 @@ export default function PageClient()
         },
         staleTime: 8000,
         refetchOnMount: false,
-        refetchOnError: false,
         refetchOnReconnect: false,
         refetchOnWindowFocus: false,
     })
