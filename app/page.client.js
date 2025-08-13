@@ -12,7 +12,11 @@ export default function PageClient()
         queryFn: async () => {
             return new Promise(resolve => setTimeout(() => resolve([{id: 1, name: 'users'}]), 5000));
         },
-        staleTime: Number.POSITIVE_INFINITY
+        staleTime: 8000,
+        refetchOnMount: false,
+        refetchOnError: false,
+        refetchOnReconnect: false,
+        refetchOnWindowFocus: false,
     })
 
     const {mutate: deleteUser} = useMutation({
