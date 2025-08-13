@@ -45,18 +45,17 @@ export default function PageClient()
             <br />
             <div>
                 Here is a list of all users:
-                {isLoading ? (
+                {isLoading && (
                     <p>Loading...</p>
-                ) : (
-                    <ul>
-                        {user.map(u => (
-                            <li key={u.id}>
-                                {u.name}&nbsp;
-                                <button onClick={() => deleteUser(u.id)}>Delete</button>
-                            </li>
-                        ))}
-                    </ul>
                 )}
+                <ul>
+                    {user?.map(u => (
+                        <li key={u.id}>
+                            {u.name}&nbsp;
+                            <button onClick={() => deleteUser(u.id)}>Delete</button>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     )
