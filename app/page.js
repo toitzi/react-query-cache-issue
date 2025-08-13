@@ -4,7 +4,6 @@ import { promises as fs } from 'fs';
 
 
 const queryClient = new QueryClient()
-
 export default async function Home()
 {
     queryClient.prefetchQuery({

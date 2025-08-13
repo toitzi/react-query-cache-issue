@@ -1,7 +1,7 @@
 'use client'
 
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
-import {deleteUserAction} from "@/app/actions";
+import {deleteUserAction, getUserAction} from "@/app/actions";
 
 export default function PageClient()
 {
@@ -9,8 +9,7 @@ export default function PageClient()
 
     const {data: user, isLoading} = useQuery({
         queryKey: ['users'],
-        // Only returning a single user, so we know when data comes from backend request (3 users) or from this request (1 user)
-        queryFn: async () => new Promise(resolve => setTimeout(() => resolve([{id: 1, name: "Max Mustermann"}]), 100)),
+        queryFn: async () => getUserAction(),
         staleTime: Number.POSITIVE_INFINITY
     })
 
