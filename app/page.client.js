@@ -1,15 +1,17 @@
 'use client'
 
-import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
-import {deleteUserAction, getUserAction} from "@/app/actions";
+import {useMutation, useQueryClient, useSuspenseQuery} from "@tanstack/react-query";
+import {deleteUserAction} from "@/app/actions";
 
 export default function PageClient()
 {
     const queryClient = useQueryClient()
 
-    const {data: user, isLoading} = useQuery({
+    const {data: user, isLoading} = useSuspenseQuery({
         queryKey: ['users'],
-        queryFn: async () => getUserAction(),
+        queryFn: async () => {
+            return new Promise(resolve => setTimeout(() => resolve([{id: 1, name: 'users'}]), 5000));
+        },
         staleTime: Number.POSITIVE_INFINITY
     })
 
